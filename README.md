@@ -1,1 +1,2 @@
-# curs_software_alex
+# welcome !!
+# curs_software_alex :) :)
