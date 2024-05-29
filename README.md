@@ -19,4 +19,6 @@ ejecucion de fronted
 npm run dev
 ```
 
+### by tu papi
+
 > You need to have a Mongodb database running
