@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-image: url('https://images.pexels.com/photos/5632396/pexels-photo-5632396.jpeg?auto=compress&cs=tinysrgb&w=600');
+  background-size: cover; /* Ajusta la imagen para que cubra toda la pantalla */
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-attachment: fixed; /* Mantiene la imagen fija cuando se desplaza la página */
+  color: rgb(68, 201, 250); /* Mantiene el color del texto */
+}
+
+
+.content-container {
+  height: calc(50vh - theme("spacing.20"));
+}
