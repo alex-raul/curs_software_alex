@@ -1,22 +1,22 @@
-### MERN Stack CRUD with JWT
+### plataforma web basico CRUD with JWT
 
-This is a web application project using React, with a Nodejs Backend using Express and Mongodb as Database (MERN Stack)
 
-### Installation with docker-compose (Recommended)
+Este es un proyecto de aplicación web usando React, con un Backend Nodejs usando Express y Mongodb como Base de Datos 
+
+### tener instalado mongoDB y node
 
 ```sh
-docker-compose up -d
-npm run dev
+ejecutar para conexion con la base de datos
+node index.js
+
 ```
 
 ### Deployment
 
 ```sh
-git clone https://github.com/FaztWeb/mern-tasks-auth
-cd mern-tasks-auth
-npm i
-npm run build
-npm start
+
+ejecucion de fronted
+npm run dev
 ```
 
 > You need to have a Mongodb database running
