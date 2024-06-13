@@ -1,0 +1,149 @@
+\documentclass[a4,10pt]{article}
+\usepackage{listings} % Paquete para resaltar el código
+\usepackage{xcolor} % Paquete para definir colores
+\usepackage{fancyvrb} % Paquete para entorno Verbatim
+\usepackage{comment}
+\usepackage{tcolorbox}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{cancel}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage[
+backend=biber,
+style=ieee,
+]{biblatex}
+
+\addbibresource{ref.bib}
+
+\pagestyle{fancy}
+\fancyhead[LO,L]{ FINESI}
+\fancyhead[CO,C]{Software Engineering}
+\fancyhead[RO,R]{\today}
+\fancyfoot[LO,L]{Est. ALEX RAUL CRUZ ACCARAPI}
+\fancyfoot[CO,C]{}
+\fancyfoot[RO,R]{Page. \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+% Definir colores personalizados para el resaltado de sintaxis
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% Configuración del paquete listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Configuración para el entorno Verbatim
+\DefineVerbatimEnvironment{VerbOut}{Verbatim}{commandchars=\\\{\}}
+
+% Configurar el estilo listings
+\lstset{style=mystyle}
+% Definir la fuente personalizada
+%\setmainfont{Arial}
+
+\begin{document}
+
+\title{\color{blue}{\Huge Numero de Hijos}}
+\author{By Alex Cruz Accarapi}
+\maketitle
+
+\section{¿Que es?}
+Es una métrica utilizada en ingeniería de software, particularmente en el contexto de la programación orientada a objetos (POO). Esta métrica mide la cantidad de clases hijas que derivan directamente de una clase base. Es una medida importante para entender la estructura de la herencia en un sistema de software.
+
+\subsection*{Importancia de la Metrica}
+\begin{itemize}
+    \item Comprensión del Diseño: Ayuda a los desarrolladores a comprender el diseño y la arquitectura del software, especialmente cómo se distribuyen las responsabilidades y cómo se reutiliza el código.
+    \item Mantenimiento del Software: Un alto número de clases hijas puede indicar que la clase base tiene muchas responsabilidades, lo que podría complicar el mantenimiento del software.
+    \item Reutilización del Código: Indica la reutilización del código, ya que las clases hijas heredan métodos y atributos de la clase base.
+\end{itemize}
+
+\subsection*{Calculo }
+Para calcular el número de hijos de una clase base, simplemente se cuenta el número de clases que heredan directamente de ella.\\
+\\
+Numero de hijos = Total de Clases Hijas\\
+\\
+\begin{itemize}
+    \item Alto Número de Hijos: Indica que la clase base es altamente reutilizada, pero también puede sugerir que la clase base está sobrecargada con muchas responsabilidades, lo cual puede complicar el mantenimiento y la evolución del software.
+    \item Bajo Número de Hijos: Indica que la clase base es menos reutilizada, lo que puede ser adecuado en ciertos contextos, pero podría también significar que hay poca reutilización del código.
+\end{itemize}
+
+
+\tcbset{
+  colframe=black, % Color del borde
+  colback=white,  % Color de fondo
+  boxrule=0.5mm,  % Grosor del borde
+  arc=4mm,        % Radio de los bordes redondeados
+}
+\begin{lstlisting}[language=Python, caption={Ejemplo de código Python}]
+class Animal:
+    def sonido(self):
+        pass
+
+class Mamifero(Animal):
+    def sonido(self):
+        return "Sonido de mamífero"
+
+class Ave(Animal):
+    def sonido(self):
+        return "Sonido de ave"
+
+class Reptil(Animal):
+    def sonido(self):
+        return "Sonido de reptil"
+
+class Pez(Animal):
+    def sonido(self):
+        return "Sonido de pez"
+## cantidad de subclases:
+len(Animal.__subclasses__())
+
+\end{lstlisting}
+\begin{tcolorbox}
+\textbf{Ventajas}
+\begin{itemize}
+    \item Claridad en la Arquitectura: Ayuda a visualizar la arquitectura del software y la relación entre las clases.
+    \item Indicador de Reutilización: Proporciona una indicación de cuánto se está reutilizando una clase base en el diseño del software.
+    \item Facilita el Refactoring: Puede ayudar a identificar clases que podrían beneficiarse de un refactoring para mejorar la modularidad y la cohesión del software.
+\end{itemize}
+
+\textbf{Limitaciones}
+\begin{itemize}
+    \item Sobrecarga de la Clase Base: Un alto número de hijos puede sugerir que la clase base tiene demasiadas responsabilidades, lo que podría violar el principio de responsabilidad única (SRP).
+    \item No Refleja Complejidad: La métrica no refleja la complejidad de las clases hijas ni la profundidad de la jerarquía de herencia.
+\end{itemize}
+\end{tcolorbox}
+
+
+\begin{thebibliography}{9}
+\bibitem{example_ref}
+  Chidamber, S. R., & Kemerer, C. F.
+  \textit{ A Metrics Suite for Object-Oriented Design.},
+ IEEE Transactions on Software Engineering, 1994.
+
+ \bibitem{example_ref}
+  Pressman, R. S.
+  \textit{Software Engineering: A Practitioner's Approach.},
+ McGraw-Hill Education, 2014.
+\end{thebibliography}
+
+\end{document}
+
